@@ -9,23 +9,25 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  TouchableHighlight,
+  AlertIOS,
 } from 'react-native';
 
 export default class NativeAlertRN extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
+        <TouchableHighlight
+          onPress={() => AlertIOS.alert(
+            'Alert Title',
+            'Alert Message',
+          )}
+        >
+          <View style={styles.button}>
+            <Text style={styles.buttonText}>Click Me !!</Text>
+          </View>
+        </TouchableHighlight>
       </View>
     );
   }
@@ -36,18 +38,16 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#FFFFFF',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
+  button: {
+    backgroundColor: '#659EC7',
     margin: 10,
+    padding: 10,
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+  buttonText: {
+    color: '#FFFFFF',
+  }
 });
 
 AppRegistry.registerComponent('NativeAlertRN', () => NativeAlertRN);
