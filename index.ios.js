@@ -15,6 +15,13 @@ import {
 } from 'react-native';
 
 export default class NativeAlertRN extends Component {
+  constructor() {
+    super();
+    this.state = {
+      textForButton: 'Button text will come here',
+    };
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -28,6 +35,21 @@ export default class NativeAlertRN extends Component {
             <Text style={styles.buttonText}>Click Me !!</Text>
           </View>
         </TouchableHighlight>
+        <TouchableHighlight
+          onPress={() => AlertIOS.alert(
+            'Alert Title',
+            'Alert Message',
+            [
+              {text: 'Button 1', onPress: () => this.setState({textForButton: 'Button 1 clicked'})},
+              {text: 'Button 2', onPress: () => this.setState({textForButton: 'Button 2 clicked'})},
+            ],
+          )}
+        >
+          <View style={styles.button}>
+            <Text style={styles.buttonText}>Alert with Buttons !!</Text>
+          </View>
+        </TouchableHighlight>
+        <Text>{this.state.textForButton}</Text>
       </View>
     );
   }
